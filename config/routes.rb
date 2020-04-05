@@ -11,4 +11,6 @@ Rails.application.routes.draw do
 
   get 'user/:id/follows' => 'relationships#follows', as: 'follows'
   get 'user/:id/followers' => 'relationships#followers', as: 'followers'
+
+  resources :search,only: [:index]
 end

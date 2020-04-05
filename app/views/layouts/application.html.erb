@@ -39,8 +39,26 @@
     <!--ヘッダーの記述-->
     <div class="container">
       <p id="notice"><%= notice %></p> <!--デバイスでnotice設定されているので呼び出してるだけ-->
-
     </div>
+
+    <div class="container">
+      <div class="row">
+        <div class="col">
+          <% if user_signed_in? %>
+
+            <%= form_tag(search_index_path, method: :get) do %> <%#　projects_pathはモデル名で読みかえること %>
+              <%= text_field_tag :search %>
+              <%= select_tag(:option, options_for_select([['User', '1'], ['Book', '2']])) %>
+              <%= select_tag(:choice, options_for_select([["完全一致", "1" ],["前方一致", "2" ],["後方一致", "3" ],["部分一致", "4" ]])) %>
+    　　      <%= submit_tag "検索" %>
+            <% end %>
+
+          <% end %>
+        </div>
+      </div>
+    </div>
+
+
     <%= yield %>
 
     <footer class="footer">
