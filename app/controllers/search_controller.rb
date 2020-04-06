@@ -7,9 +7,9 @@ class SearchController < ApplicationController
 	    @how_search = params[:choice]
 	    
 	    if @user_or_book == "1"
-	      @users = User.index(params[:search], @user_or_book)
+	      @users = User.index(params[:search], @user_or_book, @how_search)
 	    else
-	      @books = Book.index(params[:search], @user_or_book)
+	      @books = Book.index(params[:search], @user_or_book, @how_search)
 	    end
 	 end
 end
